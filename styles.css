@@ -1,0 +1,267 @@
+
+/* styles.css */
+
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Testimonial and Features Section for Mobile:*/
+
+@media (max-width: 768px) {
+    #features .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #testimonials .card {
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #f8f9fa !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* Hero Section */
+
+.hero-section {
+    position: relative;
+    background-image: url('law.webp');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark gradient overlay */
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-section .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+
+/* Services Section */
+#services h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: #ddd;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+/* Advanced Hover Effects */
+.card:hover {
+    background: linear-gradient(135deg, #ffffff, #000000);
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-title:hover {
+    text-decoration: underline;
+}
+
+/* Button Hover */
+header .btn:hover {
+    background: #0056b3;
+    color: #fff;
+    border: 2px solid #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animations with AOS */
+[data-aos] {
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+/* Hero Section Animation */
+header h1 {
+    animation: fadeIn 1s ease-in-out;
+}
+
+header p {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+header .btn {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Cards Hover Animation */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar Slide-in Effect */
+.navbar {
+    animation: slideIn 1s ease-in-out;
+}
+
+
+/* contact form */
+
+#contactForm {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contactForm .form-control {
+    border-radius: 5px;
+    border: 1px solid #000000;
+}
+
+#contactForm button {
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#contactForm button:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        text-align: center;
+    }
+
+    .service-card {
+        margin-bottom: 20px;
+    }
+
+    .testimonials .card {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+}
+
