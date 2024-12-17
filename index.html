@@ -115,6 +115,81 @@
         </div>
     </header> -->
 
+    <!-- Search Filters section -->
+
+    <section class="container mx-auto py-10">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">
+            Find Your Ideal Lawyer
+        </h2>
+        <form id="search-form" class="search-form max-w-4xl mx-auto space-y-6 p-6 rounded-lg shadow-2xl bg-gradient-to-r from-purple-500 via-indigo-600 to-purple-500">
+            <!-- Location Filter -->
+            <div class="input-group">
+                <label for="location">Location</label>
+                <select id="location" name="location">
+                    <option value="">Select a Location</option>
+                    <option value="karachi">Karachi</option>
+                    <option value="lahore">Lahore</option>
+                    <option value="islamabad">Islamabad</option>
+                </select>
+            </div>
+    
+            <!-- Expertise Filter -->
+            <div class="input-group">
+                <label for="expertise">Area of Expertise</label>
+                <select id="expertise" name="expertise">
+                    <option value="">Select Expertise</option>
+                    <option value="family-law">Family Law</option>
+                    <option value="corporate-law">Corporate Law</option>
+                    <option value="criminal-law">Criminal Law</option>
+                </select>
+            </div>
+    
+            <!-- Language Filter -->
+            <div class="input-group">
+                <label for="language">Language</label>
+                <select id="language" name="language">
+                    <option value="">Select a Language</option>
+                    <option value="english">English</option>
+                    <option value="urdu">Urdu</option>
+                    <option value="punjabi">Punjabi</option>
+                </select>
+            </div>
+    
+            <!-- Availability Filter -->
+            <div class="input-group">
+                <label for="availability">Availability</label>
+                <select id="availability" name="availability">
+                    <option value="">Select Availability</option>
+                    <option value="weekdays">Weekdays</option>
+                    <option value="weekends">Weekends</option>
+                    <option value="anytime">Anytime</option>
+                </select>
+            </div>
+    
+            
+
+    <section class="container mx-auto py-10">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">
+            Search Results
+        </h2>
+    
+        <!-- Search Filter Section -->
+        <form id="search-form" class="search-form max-w-4xl mx-auto space-y-6 p-6 rounded-lg shadow-2xl bg-gradient-to-r from-purple-500 via-indigo-600 to-purple-500">
+            <!-- Filter inputs as shown previously... -->
+    
+            <div class="text-center">
+                <button type="submit" class="btn">Search</button>
+            </div>
+        </form>
+    
+        <!-- Results Section -->
+        <div id="results-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+            <!-- Dynamically populated lawyer cards will appear here -->
+        </div>
+    </section>
+    
+    
+
     <!-- Services Section -->
      <section id="services" class="py-5">
         <div class="container">
@@ -147,8 +222,6 @@
             </div>
         </div>
     </section>
-
-  
 
     <!-- testimonals -->
 
@@ -295,6 +368,79 @@
         const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         return regex.test(email);
     }
+</script>
+
+<!-- Search Filters js -->
+
+<script>
+
+  document.querySelector('#search-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form action
+    const filters = {
+        location: document.getElementById('location').value,
+        expertise: document.getElementById('expertise').value,
+        language: document.getElementById('language').value,
+        availability: document.getElementById('availability').value,
+    };
+    console.log('Applied Filters:', filters);
+
+    // Simulate dynamic result display
+    alert('Filters Applied! Check console for details.');
+});
+
+
+</script>
+
+
+<script>
+
+const lawyerData = [
+    { name: "John Doe", location: "Karachi", expertise: "Family Law", language: "English", availability: "Weekdays" },
+    { name: "Sara Ali", location: "Lahore", expertise: "Corporate Law", language: "Urdu", availability: "Weekends" },
+    { name: "Ahmed Khan", location: "Islamabad", expertise: "Criminal Law", language: "Punjabi", availability: "Anytime" },
+    // Add more mock data as needed
+];
+
+document.querySelector('#search-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const filters = {
+        location: document.getElementById('location').value,
+        expertise: document.getElementById('expertise').value,
+        language: document.getElementById('language').value,
+        availability: document.getElementById('availability').value,
+    };
+    
+    // Filter lawyers based on selected criteria
+    const filteredLawyers = lawyerData.filter(lawyer => {
+        return (!filters.location || lawyer.location === filters.location) &&
+               (!filters.expertise || lawyer.expertise === filters.expertise) &&
+               (!filters.language || lawyer.language === filters.language) &&
+               (!filters.availability || lawyer.availability === filters.availability);
+    });
+
+    // Update the results container
+    const resultsContainer = document.getElementById('results-container');
+    resultsContainer.innerHTML = ''; // Clear previous results
+
+    if (filteredLawyers.length > 0) {
+        filteredLawyers.forEach(lawyer => {
+            const lawyerCard = document.createElement('div');
+            lawyerCard.classList.add('lawyer-card', 'bg-white', 'p-6', 'rounded-lg', 'shadow-md', 'transform', 'transition', 'hover:scale-105');
+            lawyerCard.innerHTML = `
+                <h3 class="text-xl font-semibold text-gray-800">${lawyer.name}</h3>
+                <p class="text-gray-600">Location: ${lawyer.location}</p>
+                <p class="text-gray-600">Expertise: ${lawyer.expertise}</p>
+                <p class="text-gray-600">Language: ${lawyer.language}</p>
+                <p class="text-gray-600">Availability: ${lawyer.availability}</p>
+                <button class="bg-indigo-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-indigo-700">Book a Consultation</button>
+            `;
+            resultsContainer.appendChild(lawyerCard);
+        });
+    } else {
+        resultsContainer.innerHTML = '<p class="text-center text-gray-500">No lawyers match your search criteria.</p>';
+    }
+});
+
 </script>
 
    
